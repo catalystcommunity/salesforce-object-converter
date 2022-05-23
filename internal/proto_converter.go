@@ -28,7 +28,8 @@ func (c *ProtoConverter) Convert() {
 	// build file
 	// write header first
 	headerBuilder := strings.Builder{}
-	headerBuilder.WriteString("syntax = \"proto3\";\n")
+	// include graphql proto so that the graphql field names get specified
+	headerBuilder.WriteString("syntax = \"proto3\";\n\nimport \"danielvladco/protobuf/graphql.proto\";\n\n")
 	// write message
 	messageBuilder := strings.Builder{}
 	messageBuilder.WriteString(fmt.Sprintf("message %s {\n", c.Object))
@@ -38,7 +39,7 @@ func (c *ProtoConverter) Convert() {
 		if fieldType == ProtoAny || fieldType == ProtoBase64 {
 			headerBuilder.WriteString(`import "google/protobuf/any.proto";\n`)
 		}
-		messageBuilder.WriteString(fmt.Sprintf("  %s %s = %d;\n", fieldType, fieldName, fieldNumber))
+		messageBuilder.WriteString(fmt.Sprintf("  %s %s = %d [json_name=\"%s\", (danielvladco.protobuf.graphql.field) = {name: \"%s\"}];\n", fieldType, fieldName, fieldNumber, fieldName, fieldName))
 		fieldNumber++
 	}
 	messageBuilder.WriteString("}")
