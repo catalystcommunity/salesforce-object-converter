@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/catalystsquad/app-utils-go/errorutils"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -34,7 +35,14 @@ func (c *ProtoConverter) Convert() {
 	messageBuilder := strings.Builder{}
 	messageBuilder.WriteString(fmt.Sprintf("message %s {\n", c.Object))
 	fieldNumber := 1
-	for fieldName, fieldType := range convertedFieldMap {
+	// sort field names so generation is predictable. This makes git diffs based on generated data much easier.
+	sortedFieldNames := make([]string, 0, len(convertedFieldMap))
+	for fieldName := range convertedFieldMap {
+		sortedFieldNames = append(sortedFieldNames, fieldName)
+	}
+	sort.Strings(sortedFieldNames)
+	for _, fieldName := range sortedFieldNames {
+		fieldType := convertedFieldMap[fieldName]
 		// if it's the any type, import the google any type
 		if fieldType == ProtoAny || fieldType == ProtoBase64 {
 			headerBuilder.WriteString(`import "google/protobuf/any.proto";\n`)

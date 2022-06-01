@@ -1,27 +1,27 @@
 package internal
 
 const ProtoAny = "google.protobuf.Any"
-const ProtoBase64 = "google.protobuf.Any"
+const ProtoBase64 = ProtoAny
 const ProtoBoolean = "bool"
-const ProtoCombobox = "string"
-const ProtoCurrency = "string"
-const ProtoDataCategoryGroupReference = "string"
-const ProtoDate = "string"
-const ProtoDatetime = "string"
+const ProtoCombobox = ProtoString
+const ProtoCurrency = ProtoDouble
+const ProtoDataCategoryGroupReference = ProtoString
+const ProtoDate = ProtoString
+const ProtoDatetime = ProtoString
 const ProtoDouble = "double"
-const ProtoEmail = "string"
-const ProtoEncryptedString = "string"
-const ProtoId = "string"
+const ProtoEmail = ProtoString
+const ProtoEncryptedString = ProtoString
+const ProtoId = ProtoString
 const ProtoInt = "int64"
 const ProtoMultiPickList = "repeated string"
-const ProtoPercent = "string"
-const ProtoPhone = "string"
-const ProtoPicklist = "string"
-const ProtoReference = "string"
+const ProtoPercent = ProtoDouble
+const ProtoPhone = ProtoString
+const ProtoPicklist = ProtoString
+const ProtoReference = ProtoString
 const ProtoString = "string"
-const ProtoTextArea = "string"
-const ProtoTime = "string"
-const ProtoUrl = "string"
+const ProtoTextArea = ProtoString
+const ProtoTime = ProtoString
+const ProtoUrl = ProtoString
 
 var SfProtoTypeMap = map[string]string{
 	SfAny:                        ProtoAny,
