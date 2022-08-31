@@ -2,9 +2,11 @@ package internal
 
 import (
 	"fmt"
-	"github.com/catalystsquad/app-utils-go/errorutils"
 	"os"
+	"sort"
 	"strings"
+
+	"github.com/catalystsquad/app-utils-go/errorutils"
 )
 
 type ProtoConverter struct {
@@ -22,9 +24,12 @@ func (c *ProtoConverter) SetRawFieldMap(rawFieldMap map[string]string) {
 
 func (c *ProtoConverter) Convert() {
 	convertedFieldMap := map[string]string{}
+	convertedFieldSortedKeys := []string{}
 	for fieldName, fieldType := range c.RawFieldMap {
 		convertedFieldMap[fieldName] = SfProtoTypeMap[fieldType]
+		convertedFieldSortedKeys = append(convertedFieldSortedKeys, fieldName)
 	}
+	sort.Strings(convertedFieldSortedKeys)
 	// build file
 	// write header first
 	headerBuilder := strings.Builder{}
@@ -34,12 +39,13 @@ func (c *ProtoConverter) Convert() {
 	messageBuilder := strings.Builder{}
 	messageBuilder.WriteString(fmt.Sprintf("message %s {\n", c.Object))
 	fieldNumber := 1
-	for fieldName, fieldType := range convertedFieldMap {
+	for _, fieldName := range convertedFieldSortedKeys {
 		// if it's the any type, import the google any type
+		fieldType := convertedFieldMap[fieldName]
 		if fieldType == ProtoAny || fieldType == ProtoBase64 {
 			headerBuilder.WriteString(`import "google/protobuf/any.proto";\n`)
 		}
-		messageBuilder.WriteString(fmt.Sprintf("  %s %s = %d [json_name=\"%s\", (danielvladco.protobuf.graphql.field) = {name: \"%s\"}];\n", fieldType, fieldName, fieldNumber, fieldName, fieldName))
+		messageBuilder.WriteString(fmt.Sprintf("  %s %s = %d;\n", fieldType, fieldName, fieldNumber))
 		fieldNumber++
 	}
 	messageBuilder.WriteString("}")
