@@ -1,5 +1,6 @@
 package internal
 
+const SfAddress = "address"
 const SfAny = "anytype"
 const SfBase64 = "base64"
 const SfBoolean = "boolean"
@@ -13,6 +14,7 @@ const SfEmail = "email"
 const SfEncryptedString = "encryptedstring"
 const SfId = "id"
 const SfInt = "int"
+const SfLocation = "location"
 const SfMultiPickList = "multipicklist"
 const SfPercent = "percent"
 const SfPhone = "phone"
