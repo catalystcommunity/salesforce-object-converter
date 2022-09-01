@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/catalystsquad/salesforce-object-converter/compare/v1.1.0...v1.1.1) (2022-09-01)
+
+
+### Bug Fixes
+
+* match types to new devtest env ([#5](https://github.com/catalystsquad/salesforce-object-converter/issues/5)) ([d6c1b67](https://github.com/catalystsquad/salesforce-object-converter/commit/d6c1b676bab663b52c07b9c5a22823ddd3de1aa6))
+
 # [1.1.0](https://github.com/catalystsquad/salesforce-object-converter/compare/v1.0.0...v1.1.0) (2022-09-01)
 
 
