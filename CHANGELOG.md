@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/catalystsquad/salesforce-object-converter/compare/v1.0.0...v1.1.0) (2022-09-01)
+
+
+### Features
+
+* remove json_name and graphql field name, alpha field names ([#4](https://github.com/catalystsquad/salesforce-object-converter/issues/4)) ([dbd79d0](https://github.com/catalystsquad/salesforce-object-converter/commit/dbd79d0ba148ad0452fea3a02b0838c2bbe0ed44))
+
 # 1.0.0 (2022-05-23)
 
 
