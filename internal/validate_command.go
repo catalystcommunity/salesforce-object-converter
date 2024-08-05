@@ -2,8 +2,8 @@ package internal
 
 import (
 	"encoding/json"
-	"github.com/catalystsquad/app-utils-go/errorutils"
-	"github.com/catalystsquad/app-utils-go/logging"
+	"github.com/catalystcommunity/app-utils-go/errorutils"
+	"github.com/catalystcommunity/app-utils-go/logging"
 	"github.com/go-playground/validator/v10"
 	"github.com/spf13/viper"
 )

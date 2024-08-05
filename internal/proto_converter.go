@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/catalystsquad/app-utils-go/errorutils"
+	"github.com/catalystcommunity/app-utils-go/errorutils"
 )
 
 type ProtoConverter struct {

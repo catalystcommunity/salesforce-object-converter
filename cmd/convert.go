@@ -1,14 +1,14 @@
 package cmd
 
 import (
-	"github.com/catalystsquad/app-utils-go/logging"
-	"github.com/catalystsquad/salesforce-object-converter/internal"
+	"github.com/catalystcommunity/app-utils-go/logging"
+	"github.com/catalystcommunity/salesforce-object-converter/internal"
 	"github.com/joomcode/errorx"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"strings"
 
-	"github.com/catalystsquad/app-utils-go/errorutils"
+	"github.com/catalystcommunity/app-utils-go/errorutils"
 	"github.com/spf13/cobra"
 	"github.com/tidwall/gjson"
 )
